@@ -65,7 +65,7 @@ int main(void) {
         scanf("%d %d %d", &nPoint, &nRow, &nCol);
         if (nRow < MIN_LOCATION || nRow > MAX_LOCATION 
             || nCol < MIN_LOCATION || nCol > MAX_LOCATION 
-            || nPoint <= MIN_POINT || nPoint >= MAX_POINT 
+            || nPoint < MIN_POINT || nPoint > MAX_POINT 
             || (nRow == PLAYER_STARTING_ROW && nCol == PLAYER_STARTING_COL)) {  // invalid input
             continue;
         }
@@ -77,7 +77,7 @@ int main(void) {
             map[nRow][nCol].occupier = HEALING_TYPE;
             map[nRow][nCol].points = nPoint;
         }
-        else if (nPoint == 0) {  //boulder
+        else if (nPoint == 0) {  // boulder
             map[nRow][nCol].occupier = BOULDER_TYPE;
             map[nRow][nCol].points = nPoint;
         }
