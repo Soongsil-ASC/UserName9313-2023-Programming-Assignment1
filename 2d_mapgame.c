@@ -5,7 +5,6 @@
 // Additional libraries here
 #include <math.h>
 #include <stdbool.h>
-#include <string.h>
 
 // Provided constants 
 #define SIZE 8
