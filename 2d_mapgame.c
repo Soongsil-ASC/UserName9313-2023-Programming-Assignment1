@@ -65,8 +65,8 @@ int main(void) {
         scanf("%d %d %d", &nPoint, &nRow, &nCol);
         if (nRow < MIN_LOCATION || nRow > MAX_LOCATION 
             || nCol < MIN_LOCATION || nCol > MAX_LOCATION 
-            || nPoint < MIN_POINT || nPoint > MAX_POINT 
-            || (nRow == PLAYER_STARTING_ROW && nCol == PLAYER_STARTING_COL)) {  // exception 
+            || nPoint <= MIN_POINT || nPoint >= MAX_POINT 
+            || (nRow == PLAYER_STARTING_ROW && nCol == PLAYER_STARTING_COL)) {  // invalid input
             continue;
         }
         else if (nPoint < 0) {  // monster
@@ -94,7 +94,7 @@ int main(void) {
     // ctrl + d
     char chrInput;  // string input
     while (true) {
-        scanf_s("%c", &chrInput);  // scan input
+        scanf("%c", &chrInput);  // scan input
 
         if (chrInput == 'c' && getchar() == LINE_FEED) {  // Cheat Map
             print_cheat_map(map);
@@ -106,7 +106,7 @@ int main(void) {
         }
 
         else {
-            printf("Not a proper command.\n");
+            printf("Not a proper command.\n");  // invalid input
             resetBuffer(chrInput);
         }
 
@@ -123,6 +123,8 @@ int main(void) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // TODO: you may need to add additional functions here
+
+// Clear input buffer
 void resetBuffer(char ch) {
     if (ch != LINE_FEED) {
         while (getchar() != LINE_FEED);
